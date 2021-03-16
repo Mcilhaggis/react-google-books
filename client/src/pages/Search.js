@@ -39,8 +39,6 @@ function Search() {
             image: book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : '',
             alt: book.volumeInfo.title,
     })
-    console.log(currentBook);
-
     API.saveBook(currentBook)
   }
 
@@ -58,7 +56,7 @@ function Search() {
       <div className='container'>
         {results.map(book => (
           <BookResult
-            key={book.volumeInfo.title}
+            key={book.id}
             title={book.volumeInfo.title}
             subtitle={book.volumeInfo.subtitle}
             authors={book.volumeInfo.authors}
@@ -66,9 +64,12 @@ function Search() {
             image={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''}
             alt={book.volumeInfo.title}
 
-            handleSave={() => handleSave(book)
+            handleClick={() => handleSave(book)
             }
+            btnName={"SAVE"}
+
           />
+          
         ))}
       </div>
     </div>

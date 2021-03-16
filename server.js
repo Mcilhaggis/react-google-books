@@ -15,14 +15,14 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
+// Add routes, both API and view
+app.use(routes);
+
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
-// Add routes, both API and view
-app.use(routes);
 
 // Define mongoose connection
 //urlparse param needs to be passed to accept the url format.

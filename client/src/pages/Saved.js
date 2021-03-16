@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import BookResult from '../components/BookResult/BookResult';
 import API from "../utils/API";
 
-
 function Saved() {
     // Setting the state for the books original state
     const [books, setBooks] = useState([])
@@ -16,27 +15,35 @@ function Saved() {
     function loadBooks() {
         API.getBooks()
             .then(res =>
-                // console.log(res.data)
                 setBooks(res.data)
             )
             .catch(err => console.log(err))
     }
 
-console.log(books)
-    return (
-        <>
-    {/* {books.map(book => {
+    
+  function deleteBook(id) {
+    API.deleteBook(id)
+      .then(res => loadBooks())
+      .catch(err => console.log(err));
+  }
+
+    return ( <div>
+    {books.map(book => (
         <BookResult
-        key={book.volumeInfo.title}
-        title={book.volumeInfo.title}
-        subtitle={book.volumeInfo.subtitle}
-        authors={book.volumeInfo.authors}
-        description={book.volumeInfo.description}
-        image={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''}
-        alt={book.volumeInfo.title}
+        key={book._id}
+        title={book.title}
+        subtitle={book.subtitle}
+        authors={book.authors}
+        description={book.description}
+        image={book.image}
+        alt={book.title}
+
+        handleClick={() => deleteBook(book._id)}
+        btnName={"DELETE"}
+
         />
-    })} */}
-        </>
+        ))}
+        </div>
     )
 }
 
