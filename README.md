@@ -21,7 +21,7 @@ The application can be invoked by using the following command:
 `npm start`
 
 ## Screenshots
-![Screenshot of the Book Search.](public/assets/css/img/Screenshot1.png "Screenshot of the Book Search Application")
+![Screenshot of the Book Search.](client/public/assets/image/Screenshot1.png "Screenshot of the Book Search Application")
 
 ## Tool & Resources
 
