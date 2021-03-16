@@ -15,12 +15,10 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          {/* <Wrapper> */}
             <Route exact path="/" component={Search} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/saved" component={Saved} />
             <Route exact path="*" component={NoMatch} />
-          {/* </Wrapper> */}
         </Switch>
       </div>
     </Router>
