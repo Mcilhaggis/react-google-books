@@ -46,12 +46,12 @@ function Search() {
 
   return (
     <div>
-      <div className='container'>
+      <div className='container mt-5 p-5 border'>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <input onChange={handleChange} type="search" className="form-control rounded" placeholder="Search" aria-label="Search"
               aria-describedby="search-addon" />
-            <button type="submit" value='Search' className="btn btn-outline-primary">search</button>
+            <button type="submit" value='Search' className="btn btn-outline-primary">SEARCH</button>
           </div>
         </form>
       </div>

@@ -27,7 +27,7 @@ function Saved() {
       .catch(err => console.log(err));
   }
 
-    return ( <div>
+    return ( <div className="container">
     {books.map(book => (
         <BookResult
         key={book._id}
