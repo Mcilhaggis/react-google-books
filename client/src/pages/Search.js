@@ -9,6 +9,8 @@ function Search() {
 
   //will accept what we type in the search field
   const [book, setBooks] = useState("");
+  //will store the book data that is clicked
+  const [currentBook, setCurrentBook] = useState({})
   //this will hold the response from the api 
   const [results, setResults] = useState([])
 
@@ -28,8 +30,19 @@ function Search() {
       })
   }
 
-  function handleSave(e) {
-    e.preventDefault();
+  function handleSave(book) {
+    // e.preventDefault();
+    setCurrentBook({
+            title: book.volumeInfo.title,
+            subtitle: book.volumeInfo.subtitle,
+            author: book.volumeInfo.authors,
+            description: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : '',
+            alt: book.volumeInfo.title
+
+    })
+    console.log(currentBook);
+
     // API.saveBook({
     //   title: "",
     //   subtitle: "",
@@ -38,9 +51,8 @@ function Search() {
     //   image: "",
     //   alt= ""
     // })
-
-    console.log(e.target.value)
   }
+
   console.log(results)
   return (
     <div>
@@ -62,8 +74,11 @@ function Search() {
             authors={book.volumeInfo.authors}
             description={book.volumeInfo.description}
             image={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''}
-            alt={book.title}
-            handleSave={handleSave}
+            alt={book.volumeInfo.title}
+            handleSave={() => 
+              // console.log(book)
+              handleSave(book)
+            }
           />
         ))}
       </div>
