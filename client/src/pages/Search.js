@@ -31,6 +31,7 @@ function Search() {
   }
 
   function handleSave(book) {
+    console.log(book.volumeInfo.infoLink)
     setCurrentBook({
             title: book.volumeInfo.title,
             subtitle: book.volumeInfo.subtitle,
@@ -38,6 +39,7 @@ function Search() {
             description: book.volumeInfo.description,
             image: book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : '',
             alt: book.volumeInfo.title,
+            link: book.volumeInfo.infoLink
     })
     API.saveBook(currentBook)
   }
@@ -63,7 +65,7 @@ function Search() {
             description={book.volumeInfo.description}
             image={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''}
             alt={book.volumeInfo.title}
-
+            viewLink={book.volumeInfo.infoLink}
             handleClick={() => handleSave(book)
             }
             btnName={"SAVE"}

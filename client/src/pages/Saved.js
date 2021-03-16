@@ -37,7 +37,7 @@ function Saved() {
         description={book.description}
         image={book.image}
         alt={book.title}
-
+        viewLink={book.link}
         handleClick={() => deleteBook(book._id)}
         btnName={"DELETE"}
 

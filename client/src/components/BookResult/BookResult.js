@@ -1,6 +1,6 @@
 import React from "react"
 
-function BookResult({ title, authors, description, alt, image, subtitle, handleClick, btnName }) {
+function BookResult({ title, authors, description, alt, image, subtitle, handleClick, btnName, viewLink }) {
     return (
         <div className="container-fluid p-5 book-container">
             <div className="row">
@@ -11,7 +11,7 @@ function BookResult({ title, authors, description, alt, image, subtitle, handleC
                     <img src={image} alt={alt}></img>
                 </div>
                 <div className="col-sm-9 mt-5">
-                    <button className="float-right btn-dark m-1">VIEW</button>
+                    <a href={viewLink} target="_blank" rel="noopener noreferrer"><button className="float-right btn-dark m-1">VIEW</button></a>
                     <button className="float-right btn-dark m-1" onClick={handleClick}>{btnName}</button>
                     <p className="mt-5">{description}</p>
                 </div>
