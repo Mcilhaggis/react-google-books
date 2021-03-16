@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios"
 import BookResult from "../components/BookResult/BookResult"
 
-import Form from '../components/Form'
+// import Form from '../components/Form'
 import API from '../utils/API';
 
 function Search() {
@@ -31,7 +31,6 @@ function Search() {
   }
 
   function handleSave(book) {
-    // e.preventDefault();
     setCurrentBook({
             title: book.volumeInfo.title,
             subtitle: book.volumeInfo.subtitle,
@@ -43,17 +42,11 @@ function Search() {
     })
     console.log(currentBook);
 
-    // API.saveBook({
-    //   title: "",
-    //   subtitle: "",
-    //   authors: "",
-    //   description: "",
-    //   image: "",
-    //   alt= ""
-    // })
+    API.saveBook({
+      title: currentBook.title,
+    })
   }
 
-  console.log(results)
   return (
     <div>
       <div className='container'>
@@ -68,16 +61,14 @@ function Search() {
       <div className='container'>
         {results.map(book => (
           <BookResult
-            key={book.title}
+            key={book.volumeInfo.title}
             title={book.volumeInfo.title}
             subtitle={book.volumeInfo.subtitle}
             authors={book.volumeInfo.authors}
             description={book.volumeInfo.description}
             image={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''}
             alt={book.volumeInfo.title}
-            handleSave={() => 
-              // console.log(book)
-              handleSave(book)
+            handleSave={() => handleSave(book)
             }
           />
         ))}
