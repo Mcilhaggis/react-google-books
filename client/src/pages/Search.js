@@ -10,7 +10,7 @@ function Search() {
   //will accept what we type in the search field
   const [book, setBooks] = useState("");
   //will store the book data that is clicked
-  const [currentBook, setCurrentBook] = useState({})
+  // const [currentBook, setCurrentBook] = useState([])
   //this will hold the response from the api 
   const [results, setResults] = useState([])
 
@@ -25,25 +25,41 @@ function Search() {
     e.preventDefault();
     axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY + "&maxResults=40")
       .then(data => {
-        console.log(data.data.items);
+        // console.log(data.data.items);
         setResults(data.data.items);
       })
+      // console.log(results)
+      // console.log(currentBook)
   }
 
-  function handleSave(book) {
-    console.log(book.volumeInfo.infoLink)
-    console.log(book.volumeInfo.title)
-    setCurrentBook({
-            title: book.volumeInfo.title,
-            subtitle: book.volumeInfo.subtitle,
-            authors: book.volumeInfo.authors,
-            description: book.volumeInfo.description,
-            image: book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : '',
-            alt: book.volumeInfo.title,
-            link: book.volumeInfo.infoLink
+  function handleSave(results) {
+    console.log(results)
+    // console.log(results)
+    // const { volumeInfo } = results.filter(book => book.id === id)[0]
+
+    // setCurrentBook({
+    //         title: book.volumeInfo.title,
+    //         subtitle: book.volumeInfo.subtitle,
+    //         authors: book.volumeInfo.authors,
+    //         description: book.volumeInfo.description,
+    //         image: book.volumeInfo.imageLinks,
+    //         alt: book.volumeInfo.title,
+    //         link: book.volumeInfo.infoLink
+    // })
+    API.saveBook({
+              title: results.volumeInfo.title,
+            subtitle: results.volumeInfo.subtitle,
+            authors: results.volumeInfo.authors,
+            description: results.volumeInfo.description,
+            // image: results.volumeInfo.imageLinks.thumbnail,
+            alt: results.volumeInfo.title,
+            link: results.volumeInfo.infoLink
     })
-    API.saveBook(currentBook)
+    // console.log(currentBook)
+    // console.log(results)
+    
   }
+  // console.log(book)
 
   return (
     <div>
@@ -57,17 +73,17 @@ function Search() {
         </form>
       </div>
       <div className='container'>
-        {results.map(book => (
+        {results.map(item => (
           <BookResult
-            key={book.id}
-            title={book.volumeInfo.title}
-            subtitle={book.volumeInfo.subtitle}
-            authors={book.volumeInfo.authors}
-            description={book.volumeInfo.description}
-            image={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''}
-            alt={book.volumeInfo.title}
-            viewLink={book.volumeInfo.infoLink}
-            handleClick={() => handleSave(book)
+            key={item.id}
+            title={item.volumeInfo.title}
+            subtitle={item.volumeInfo.subtitle}
+            authors={item.volumeInfo.authors}
+            description={item.volumeInfo.description}
+            // image={item.volumeInfo.imageLinks.thumbnail}
+            alt={item.volumeInfo.title}
+            viewLink={item.volumeInfo.infoLink}
+            handleClick={() => handleSave(item)
             }
             btnName={"SAVE"}
 
