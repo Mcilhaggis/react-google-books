@@ -32,6 +32,7 @@ function Search() {
 
   function handleSave(book) {
     console.log(book.volumeInfo.infoLink)
+    console.log(book.volumeInfo.title)
     setCurrentBook({
             title: book.volumeInfo.title,
             subtitle: book.volumeInfo.subtitle,
