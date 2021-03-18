@@ -10,9 +10,9 @@ const bookSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  // image: {
-  //   type: String
-  // },
+  image: {
+    type: String
+  },
   link: {
     type: String
   }
