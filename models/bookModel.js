@@ -9,9 +9,9 @@ const bookSchema = new Schema({
   subtitle: {
     type: String,
   },
-  authors: [{ 
-    type: String
-  }],
+  authors: {
+    type: [String]
+  },
   description: {
     type: String
   },
