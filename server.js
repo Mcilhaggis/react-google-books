@@ -27,7 +27,7 @@ app.get("*", (req, res) => {
 
 // Define mongoose connection
 //urlparse param needs to be passed to accept the url format.
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/radiant-refuge-42277",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
 //this needs to be passed to acccept the orange/second url format.
  { useNewUrlParser: true,
   useUnifiedTopology: true,
