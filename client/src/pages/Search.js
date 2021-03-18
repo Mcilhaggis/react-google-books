@@ -9,8 +9,6 @@ function Search() {
 
   //will accept what we type in the search field
   const [book, setBooks] = useState("");
-  //will store the book data that is clicked
-  // const [currentBook, setCurrentBook] = useState([])
   //this will hold the response from the api 
   const [results, setResults] = useState([])
 
@@ -25,27 +23,13 @@ function Search() {
     e.preventDefault();
     axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY + "&maxResults=40")
       .then(data => {
-        // console.log(data.data.items);
         setResults(data.data.items);
       })
-      // console.log(results)
-      // console.log(currentBook)
   }
 
   function handleSave(results) {
     console.log(results)
-    // console.log(results)
-    // const { volumeInfo } = results.filter(book => book.id === id)[0]
-
-    // setCurrentBook({
-    //         title: book.volumeInfo.title,
-    //         subtitle: book.volumeInfo.subtitle,
-    //         authors: book.volumeInfo.authors,
-    //         description: book.volumeInfo.description,
-    //         image: book.volumeInfo.imageLinks,
-    //         alt: book.volumeInfo.title,
-    //         link: book.volumeInfo.infoLink
-    // })
+ 
     API.saveBook({
               title: results.volumeInfo.title,
             subtitle: results.volumeInfo.subtitle,
@@ -55,11 +39,7 @@ function Search() {
             alt: results.volumeInfo.title,
             link: results.volumeInfo.infoLink
     })
-    // console.log(currentBook)
-    // console.log(results)
-    
   }
-  // console.log(book)
 
   return (
     <div>
