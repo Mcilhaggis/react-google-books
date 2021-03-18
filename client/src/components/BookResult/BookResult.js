@@ -7,7 +7,7 @@ function BookResult({ title, authors, description, alt, image, subtitle, handleC
                     <h4>{authors}</h4>
             <div className="row">
                 <div className="col-sm-4">
-                    <img src={image} alt={alt} className="mt-3"></img>
+                    <img src={image} alt={alt} className="mt-3" />
                 </div>
                 <div className="col-sm-8 mt-5 bg-light">
                     <a href={viewLink} target="_blank" rel="noopener noreferrer"><button className="float-right btn-dark mt-3 ml-2 mb-1">VIEW</button></a>

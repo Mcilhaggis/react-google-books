@@ -8,7 +8,9 @@ function Search() {
   const [book, setBooks] = useState("");
   //this will hold the response from the api 
   const [results, setResults] = useState([])
+
   const API_KEY = "AIzaSyAdTBuVAEcE5cncQwnLmSTT4JcDGQW2nKk";
+  
   function handleChange(e) {
     const book = e.target.value;
     setBooks(book)
